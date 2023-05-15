@@ -1,9 +1,31 @@
-import React from 'react'
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+
+import {styles} from "../styles";
+import {navLinks} from "../constants";
+import {logo, menu, close} from "../assets";
 
 const Navbar = () => {
+  const [active, setActive] = useState("");
   return (
-    <div>Navbar</div>
-  )
-}
+    <nav
+      className={`${styles.padingX}
+   w-full flex items-center py-5 fixed top-09 z-20 bg-pramiry`}
+    >
+      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+        <Link
+          className="flex items-center gap-2"
+          to="/"
+          onClick={() => {
+            setActive("");
+            window.scrollTo(0, 0);
+          }}
+        >
+          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+        </Link>
+      </div>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
